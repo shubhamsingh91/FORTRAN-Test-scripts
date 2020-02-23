@@ -99,7 +99,7 @@ time_omp_par_begin =  omp_get_wtime()
 do ii=1,n
   !print*, omp_get_thread_num()
 
-  arr2(ii) = arr2(ii)+ var3
+  arr2(ii) = arr2(ii) + var3
   !arr2(ii) = arr2(ii)*var2
   !arr2(ii) = arr2(ii)+5 - 981.0
 
