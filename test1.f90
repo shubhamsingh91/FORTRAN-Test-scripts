@@ -1,3 +1,7 @@
+
+! Basic FORTRAN Code for testing openmp commands
+
+
 program main
 
 USE OMP_LIB
