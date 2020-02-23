@@ -4,4 +4,4 @@ implicit none
 
   print*, "Hello World!"
 
-program end
+end program main
