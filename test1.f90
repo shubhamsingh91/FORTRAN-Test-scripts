@@ -5,13 +5,14 @@
 program main
 
 USE OMP_LIB
+USE mod1
 
 implicit none
 
 ! Declare Variables here
-real*8 :: var1, var2, var3
+real*8 :: var1, var2, var3, temp1, temp2, temp3
 real*8, dimension(:), allocatable :: arr1, arr2
-integer :: ii, jj, OMP_NUM_THREAD, n = 1e8
+integer :: ii, jj, OMP_NUM_THREAD, n = 1e6
 integer ::   id
 
 
@@ -71,12 +72,23 @@ time_ser_sys_clock = time_ser_sys_end-time_ser_sys_begin
 
 time_omp_ser = time_omp_ser_end - time_omp_ser_begin
 
-print*, "Time taken for the serial code using cpu time is", time_ser_cpu_time
+!print*, "Time taken for the serial code using cpu time is", time_ser_cpu_time
 !print*, "Time serial begin is", time_ser_begin
 !print*, "Time serial end is", time_ser_end
 
-print*, "Time taken for serial code using system clock is",time_ser_sys_clock
+!print*, "Time taken for serial code using system clock is",time_ser_sys_clock
 print*, "Time taken for serial code using the omp function is", time_omp_ser
+
+! Calling a subroutine here
+
+CALL RANDOM_NUMBER(temp1)
+CALL RANDOM_NUMBER(temp2)
+
+CALL sub1(temp1,temp2,temp3)
+
+print*, " "
+print*, "temp3 is", temp3
+
 
 !----------------------------------------------------------------------------------!
 !---------------- PARALLEL Region starts here----------------------------------------!
@@ -125,8 +137,8 @@ time_omp_par = time_omp_par_end - time_omp_par_begin
 print*, " "
 print*, " "
 
-print*, "Time taken for the parallel code using cpu time is", time_par
-print*, "Time taken for the parallel code using system clock is", time_par_sys_clock
+!print*, "Time taken for the parallel code using cpu time is", time_par
+!print*, "Time taken for the parallel code using system clock is", time_par_sys_clock
 print*, "Time taken for the parallel code using omp function is", time_omp_par
 print*, " "
 print*, " "
